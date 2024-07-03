@@ -1,0 +1,27 @@
+pluginManagement {
+    repositories {
+        google {
+            content {
+                includeGroupByRegex("com\\.android.*")
+                includeGroupByRegex("com\\.google.*")
+                includeGroupByRegex("androidx.*")
+            }
+        }
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.name = "TryFlutterModule"
+include ':app'
+setBinding(new Binding([gradle: this]))                                // new
+evaluate(new File(                                                     // new
+        settingsDir,                                            // new
+        'flutter_module/.android/include_flutter.groovy'                   // new
+))
